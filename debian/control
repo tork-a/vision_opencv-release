@@ -1,0 +1,12 @@
+Source: ros-hydro-image-geometry
+Section: misc
+Priority: extra
+Maintainer: Vincent Rabaud <vrabaud@willowgarage.com>
+Build-Depends: debhelper (>= 7.0.50~), ros-hydro-catkin, ros-hydro-opencv2, ros-hydro-sensor-msgs
+Homepage: http://www.ros.org/wiki/image_geometry
+Standards-Version: 3.9.2
+
+Package: ros-hydro-image-geometry
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-hydro-opencv2, ros-hydro-sensor-msgs
+Description: `image_geometry` contains C++ and Python libraries for interpreting images geometrically. It interfaces the calibration parameters in sensor_msgs/CameraInfo messages with OpenCV functions such as image rectification, much as cv_bridge interfaces ROS sensor_msgs/Image with OpenCV data types.
