@@ -1,0 +1,12 @@
+Source: ros-hydro-vision-opencv
+Section: misc
+Priority: extra
+Maintainer: "Vincent Rabaud <vrabaud@willowgarage.com>"
+Build-Depends: debhelper (>= 7.0.50~), ros-hydro-catkin
+Homepage: http://www.ros.org/wiki/vision_opencv
+Standards-Version: 3.9.2
+
+Package: ros-hydro-vision-opencv
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-hydro-cv-bridge, ros-hydro-image-geometry
+Description: Packages for interfacing ROS with OpenCV, a library of programming functions for real time computer vision.
