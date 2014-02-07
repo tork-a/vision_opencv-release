@@ -1,0 +1,12 @@
+Source: ros-groovy-opencv-tests
+Section: misc
+Priority: extra
+Maintainer: Vincent Rabaud <vincent.rabaud@gmail.com>
+Build-Depends: debhelper (>= 7.0.50~), ros-groovy-catkin, ros-groovy-cv-bridge, ros-groovy-ros, ros-groovy-sensor-msgs
+Homepage: http://pr.willowgarage.com/wiki/opencv_tests
+Standards-Version: 3.9.2
+
+Package: ros-groovy-opencv-tests
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-groovy-cv-bridge
+Description: opencv_tests
