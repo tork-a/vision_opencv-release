@@ -1,0 +1,12 @@
+Source: ros-indigo-cv-bridge
+Section: misc
+Priority: extra
+Maintainer: Vincent Rabaud <vincent.rabaud@gmail.com>
+Build-Depends: debhelper (>= 7.0.50~), libboost-all-dev, libopencv-dev, python-opencv, ros-indigo-catkin (>= 0.5.68), ros-indigo-rosconsole, ros-indigo-sensor-msgs
+Homepage: http://www.ros.org/wiki/cv_bridge
+Standards-Version: 3.9.2
+
+Package: ros-indigo-cv-bridge
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libboost-all-dev, libopencv-dev, python-opencv, ros-indigo-rosconsole, ros-indigo-sensor-msgs
+Description: This contains CvBridge, which converts between ROS Image messages and OpenCV images.
