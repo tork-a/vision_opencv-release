@@ -2,19 +2,13 @@
 Changelog for package vision_opencv
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.10.17 (2014-04-18)
+--------------------
+* remove references to 1.11.* as it creates errors on teh farm
+* Contributors: Vincent Rabaud
+
 1.10.16 (2014-04-16)
 --------------------
-
-1.11.1 (2014-04-16)
--------------------
-* update logs
-* Contributors: Vincent Rabaud
-
-1.11.0 (2014-02-15)
--------------------
-* update changelogs
-* add changelogs
-* Contributors: Vincent Rabaud
 
 1.10.15 (2014-02-07)
 --------------------
