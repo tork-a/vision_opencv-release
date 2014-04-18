@@ -2,15 +2,13 @@
 Changelog for package image_geometry
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.11.1 (2014-04-16)
--------------------
-
-1.11.0 (2014-02-15)
--------------------
-* remove OpenCV 1 API
-* fixes `#6 <https://github.com/ros-perception/vision_opencv/issues/6>`_
-* fix OpenCV dependencies
+1.10.17 (2014-04-18)
+--------------------
+* remove references to 1.11.* as it creates errors on teh farm
 * Contributors: Vincent Rabaud
+
+1.10.16 (2014-04-16)
+--------------------
 
 1.10.15 (2014-02-07)
 --------------------
@@ -24,10 +22,12 @@ Changelog for package image_geometry
 
 1.10.14 (2013-11-23 16:17)
 --------------------------
+* "1.10.14"
 * Contributors: Vincent Rabaud
 
 1.10.13 (2013-11-23 09:19)
 --------------------------
+* "1.10.13"
 * Contributors: Vincent Rabaud
 
 1.10.12 (2013-11-22)
@@ -37,14 +37,17 @@ Changelog for package image_geometry
 
 1.10.11 (2013-10-23)
 --------------------
+* "1.10.11"
 * Contributors: Vincent Rabaud
 
 1.10.10 (2013-10-19)
 --------------------
+* "1.10.10"
 * Contributors: Vincent Rabaud
 
 1.10.9 (2013-10-07)
 -------------------
+* "1.10.9"
 * fixes `#23 <https://github.com/ros-perception/vision_opencv/issues/23>`_
 * Contributors: Vincent Rabaud
 
