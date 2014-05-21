@@ -1,14 +1,13 @@
 import array
 
-import cv2
+import cv
 import sensor_msgs.msg
 import math
 import copy
-import numpy
 
 def mkmat(rows, cols, L):
-    mat = numpy.matrix(L, dtype='float64')
-    mat.resize((rows,cols))
+    mat = cv.CreateMat(rows, cols, cv.CV_64FC1)
+    cv.SetData(mat, array.array('d', L), 8 * cols)
     return mat
 
 class PinholeCameraModel:
@@ -81,12 +80,10 @@ class PinholeCameraModel:
         Applies the rectification specified by camera parameters :math:`K` and and :math:`D` to image `raw` and writes the resulting image `rectified`.
         """
 
-        self.mapx = np.ndarray(shape=(self.height, self.width, 1),
-                           dtype='float32')
-        self.mapy = np.ndarray(shape=(self.height, self.width, 1),
-                           dtype='float32')
-        cv2.initUndistortRectifyMap(self.K, self.D, self.R, self.P, self.mapx, self.mapy)
-        cv2.remap(raw, rectified, self.mapx, self.mapy)
+        self.mapx = cv.CreateImage((self.width, self.height), cv.IPL_DEPTH_32F, 1)
+        self.mapy = cv.CreateImage((self.width, self.height), cv.IPL_DEPTH_32F, 1)
+        cv.InitUndistortRectifyMap(self.K, self.D, self.R, self.P, self.mapx, self.mapy)
+        cv.Remap(raw, rectified, self.mapx, self.mapy)
         
     def rectifyPoint(self, uv_raw):
         """
@@ -99,9 +96,9 @@ class PinholeCameraModel:
         """
 
         src = mkmat(1, 2, list(uv_raw))
-        src.resize((2, 1))
-        dst = src.copy()
-        cv2.undistortPoints(src, dst, self.K, self.D, self.R, self.P)
+        src = cv.Reshape(src, 2)
+        dst = cv.CloneMat(src)
+        cv.UndistortPoints(src, dst, self.K, self.D, self.R, self.P)
         return dst[0,0]
 
     def project3dToPixel(self, point):
@@ -114,7 +111,8 @@ class PinholeCameraModel:
         This is the inverse of :meth:`projectPixelTo3dRay`.
         """
         src = mkmat(4, 1, [point[0], point[1], point[2], 1.0])
-        dst = self.P * src
+        dst = cv.CreateMat(3, 1, cv.CV_64FC1)
+        cv.MatMul(self.P, src, dst)
         x = dst[0,0]
         y = dst[1,0]
         w = dst[2,0]
@@ -278,7 +276,8 @@ class StereoCameraModel:
         #    [ 0, 0,  0,  Fx ]
         #    [ 0, 0, 1 / Tx, (Crx-Clx)/Tx ]
 
-        self.Q = numpy.zeros((4, 4), dtype='float64')
+        self.Q = cv.CreateMat(4, 4, cv.CV_64FC1)
+        cv.SetZero(self.Q)
         self.Q[0, 0] = 1.0
         self.Q[0, 3] = -cx
         self.Q[1, 1] = 1.0
@@ -322,7 +321,9 @@ class StereoCameraModel:
         Note that a disparity of zero implies that the 3D point is at infinity.
         """
         src = mkmat(4, 1, [left_uv[0], left_uv[1], disparity, 1.0])
-        dst = self.Q * src
+        dst = cv.CreateMat(4, 1, cv.CV_64FC1)
+        cv.SetZero(dst)
+        cv.MatMul(self.Q, src, dst)
         x = dst[0, 0]
         y = dst[1, 0]
         z = dst[2, 0]
