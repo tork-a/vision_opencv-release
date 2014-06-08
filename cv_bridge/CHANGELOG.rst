@@ -1,3 +1,8 @@
+1.10.18 (2014-06-08)
+--------------------
+* Correct dependency from non-existent package to cv_bridge
+* Contributors: Isaac Isao Saito
+
 1.10.17 (2014-04-18)
 --------------------
 
