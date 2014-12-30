@@ -1,0 +1,12 @@
+Source: ros-jade-opencv-tests
+Section: misc
+Priority: extra
+Maintainer: Vincent Rabaud <vincent.rabaud@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-jade-catkin, ros-jade-cv-bridge, ros-jade-ros, ros-jade-rospy, ros-jade-rostest, ros-jade-rosunit, ros-jade-sensor-msgs
+Homepage: http://pr.willowgarage.com/wiki/opencv_tests
+Standards-Version: 3.9.2
+
+Package: ros-jade-opencv-tests
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jade-cv-bridge
+Description: opencv_tests
