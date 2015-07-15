@@ -1,3 +1,31 @@
+## vision_opencv (indigo) - 1.11.8-0
+
+The packages in the `vision_opencv` repository were released into the `indigo` distro by running `/usr/bin/bloom-release --track indigo --rosdistro indigo vision_opencv` on `Wed, 15 Jul 2015 20:42:28 -0000`
+
+These packages were released:
+- `cv_bridge`
+- `image_geometry`
+- `opencv_apps`
+- `vision_opencv`
+
+These packages were explicitly ignored:
+- `opencv_tests`
+
+Version of package(s) in repository `vision_opencv`:
+- upstream repository: https://github.com/ros-perception/vision_opencv.git
+- release repository: https://github.com/ros-gbp/vision_opencv-release.git
+- rosdistro version: `1.11.7-0`
+- old version: `1.11.7-0`
+- new version: `1.11.8-0`
+
+Versions of tools used:
+- bloom version: `0.5.20`
+- catkin_pkg version: `0.2.8`
+- rosdep version: `0.11.2`
+- rosdistro version: `0.4.2`
+- vcstools version: `0.1.36`
+
+
 ## vision_opencv (hydro) - 1.10.17-1
 
 The packages in the `vision_opencv` repository were released into the `hydro` distro by running `/usr/bin/bloom-release -r hydro -t hydro vision_opencv` on `Wed, 21 May 2014 18:08:51 -0000`
