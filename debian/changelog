@@ -1,0 +1,16 @@
+ros-indigo-opencv-apps (1.11.8-0saucy) saucy; urgency=high
+
+  * simplify the OpenCV3 compatibility
+  * fix image output of fback_flow
+  * fix error: ISO C++ forbids initialization of member for gcc 4.6
+  * add std_srvs
+  * add std_srvs
+  * fix error: ISO C++ forbids initialization of member for gcc 4.6
+  * get opencv_apps to compile with OpenCV3
+  * fix licenses for Kei
+  * add opencv_apps, proposed in #40 <https://github.com/ros-perception/vision_opencv/issues/40>
+  * Contributors: Kei Okada, Vincent Rabaud, Yuto Inagaki
+
+ -- Kei Okada <kei.okada@gmail.com>  Tue, 14 Jul 2015 22:00:00 -0000
+
+
