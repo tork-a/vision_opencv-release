@@ -131,6 +131,10 @@ class LKFlowNodelet : public nodelet::Nodelet
     {
       // Convert the image into something opencv can handle.
       cv::Mat image = cv_bridge::toCvShare(msg, msg->encoding)->image;
+      if (msg->encoding == sensor_msgs::image_encodings::RGB8 ||
+          msg->encoding == sensor_msgs::image_encodings::RGB16) {
+        cv::cvtColor(image, image, cv::COLOR_RGB2BGR);
+      }
 
       // Messages
       opencv_apps::FlowArrayStamped flows_msg;
@@ -153,7 +157,7 @@ class LKFlowNodelet : public nodelet::Nodelet
       if ( image.channels() > 1 ) {
         cv::cvtColor( image, gray, cv::COLOR_BGR2GRAY );
       } else {
-        gray = image;
+        image.copyTo(gray);
       }
 
       if( nightMode )
