@@ -4,6 +4,8 @@ language: generic
 env:
   - OPENCV_VERSION=2 ROS_DISTRO=indigo
   - OPENCV_VERSION=3 ROS_DISTRO=indigo
+  - OPENCV_VERSION=2 ROS_DISTRO=jade
+  - OPENCV_VERSION=3 ROS_DISTRO=jade
 # Install system dependencies, namely ROS.
 before_install:
   # Define some config vars.
@@ -14,7 +16,7 @@ before_install:
   - export CATKIN_OPTIONS=$CI_SOURCE_PATH/catkin.options
   - export ROS_PARALLEL_JOBS='-j8 -l6'
   # Install ROS
-  - sudo sh -c "echo \"deb http://packages.ros.org/ros/ubuntu $ROS_CI_DESKTOP main\" > /etc/apt/sources.list.d/ros-latest.list"
+  - sudo sh -c "echo \"deb http://packages.ros.org/ros-shadow-fixed/ubuntu $ROS_CI_DESKTOP main\" > /etc/apt/sources.list.d/ros-latest.list"
   - wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
   - sudo apt-get update -qq
   # Install ROS
@@ -41,6 +43,7 @@ before_script:
   - cd ~/catkin_ws/src
   - wstool init
   - if [[ -f $ROSINSTALL_FILE ]] ; then wstool merge $ROSINSTALL_FILE ; fi
+  - if [ $OPENCV_VERSION == 3 ]; then wstool set -y image_pipeline --git https://github.com/ros-perception/image_pipeline; fi # need to recompile image_proc
   - wstool up
 
   # package depdencies: install using rosdep.
