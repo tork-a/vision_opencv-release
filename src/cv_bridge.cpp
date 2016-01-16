@@ -46,6 +46,7 @@
 #include <sensor_msgs/image_encodings.h>
 
 #include <cv_bridge/cv_bridge.h>
+#include <cv_bridge/rgb_colors.h>
 
 namespace enc = sensor_msgs::image_encodings;
 
@@ -191,15 +192,11 @@ const std::vector<int> getConversionCode(std::string src_encoding, std::string d
 {
   Encoding src_encod = getEncoding(src_encoding);
   Encoding dst_encod = getEncoding(dst_encoding);
-  bool is_src_color_format = sensor_msgs::image_encodings::isColor(src_encoding) ||
-                             sensor_msgs::image_encodings::isMono(src_encoding) ||
-                             sensor_msgs::image_encodings::isBayer(src_encoding) ||
-                             (src_encoding == sensor_msgs::image_encodings::YUV422);
-  bool is_dst_color_format = sensor_msgs::image_encodings::isColor(dst_encoding) ||
-                             sensor_msgs::image_encodings::isMono(dst_encoding) ||
-                             sensor_msgs::image_encodings::isBayer(dst_encoding) ||
-                             (dst_encoding == sensor_msgs::image_encodings::YUV422);
-  bool is_num_channels_the_same = (sensor_msgs::image_encodings::numChannels(src_encoding) == sensor_msgs::image_encodings::numChannels(dst_encoding));
+  bool is_src_color_format = enc::isColor(src_encoding) || enc::isMono(src_encoding) ||
+                             enc::isBayer(src_encoding) || (src_encoding == enc::YUV422);
+  bool is_dst_color_format = enc::isColor(dst_encoding) || enc::isMono(dst_encoding) ||
+                             enc::isBayer(dst_encoding) || (dst_encoding == enc::YUV422);
+  bool is_num_channels_the_same = (enc::numChannels(src_encoding) == enc::numChannels(dst_encoding));
 
   // If we have no color info in the source, we can only convert to the same format which
   // was resolved in the previous condition. Otherwise, fail
@@ -532,26 +529,23 @@ CvImageConstPtr cvtColorForDisplay(const CvImageConstPtr& source,
   {
     try
     {
-      // If there is a chance we can just share the data, let's try it out
-      if (sensor_msgs::image_encodings::isColor(source->encoding) || sensor_msgs::image_encodings::isMono(source->encoding))
+      // Let's decide upon an output format
+      if (enc::numChannels(source->encoding) == 1)
       {
-        return source;
-      }
-      // Otherwise, let's decide upon an output format
-      if (sensor_msgs::image_encodings::numChannels(source->encoding) == 1)
-      {
-        if ((sensor_msgs::image_encodings::bitDepth(source->encoding) == 8) ||
-            (sensor_msgs::image_encodings::bitDepth(source->encoding) == 16))
-          encoding = sensor_msgs::image_encodings::MONO8;
+        if ((enc::bitDepth(source->encoding) == 8) ||
+            (enc::bitDepth(source->encoding) == 16))
+          encoding = enc::MONO8;
+        else if (enc::bitDepth(source->encoding) == 32)
+          encoding = enc::BGR8;
         else
           throw std::runtime_error("Unsupported depth of the source encoding " + encoding);
       }
       else
       {
         // We choose BGR by default here as we assume people will use OpenCV
-        if ((sensor_msgs::image_encodings::bitDepth(source->encoding) == 8) ||
-            (sensor_msgs::image_encodings::bitDepth(source->encoding) == 16))
-          encoding = sensor_msgs::image_encodings::BGR8;
+        if ((enc::bitDepth(source->encoding) == 8) ||
+            (enc::bitDepth(source->encoding) == 16))
+          encoding = enc::BGR8;
         else
           throw std::runtime_error("Unsupported depth of the source encoding " + encoding);
       }
@@ -564,10 +558,35 @@ CvImageConstPtr cvtColorForDisplay(const CvImageConstPtr& source,
   }
   else
   {
-    if ((!sensor_msgs::image_encodings::isColor(encoding_out) && !sensor_msgs::image_encodings::isMono(encoding_out)) ||
-        (sensor_msgs::image_encodings::bitDepth(encoding) != 8))
+    if ((!enc::isColor(encoding_out) && !enc::isMono(encoding_out)) ||
+        (enc::bitDepth(encoding) != 8))
       throw Exception("cv_bridge.cvtColorForDisplay() does not have an output encoding that is color or mono, and has is bit in depth");
 
+  }
+
+  // Convert label to bgr image
+  if (encoding == sensor_msgs::image_encodings::BGR8 &&
+      sensor_msgs::image_encodings::bitDepth(source->encoding) == 32)
+  {
+    CvImagePtr result(new CvImage());
+    result->header = source->header;
+    result->encoding = encoding;
+    result->image = cv::Mat(source->image.rows, source->image.cols, CV_8UC3);
+    for (size_t j = 0; j < source->image.rows; ++j) {
+      for (size_t i = 0; i < source->image.cols; ++i) {
+        int label = source->image.at<int>(j, i);
+        if (label == -1) {  // background label
+          result->image.at<cv::Vec3b>(j, i) = cv::Vec3b(0, 0, 0);
+        }
+        else
+        {
+          cv::Vec3d rgb = rgb_colors::getRGBColor(label);
+          // result image should be BGR
+          result->image.at<cv::Vec3b>(j, i) = cv::Vec3b(int(rgb[2] * 255), int(rgb[1] * 255), int(rgb[0] * 255));
+        }
+      }
+    }
+    return result;
   }
 
   // Perform scaling if asked for
@@ -579,7 +598,7 @@ CvImageConstPtr cvtColorForDisplay(const CvImageConstPtr& source,
       CvImagePtr result(new CvImage());
       result->header = source->header;
       result->encoding = encoding;
-      if (sensor_msgs::image_encodings::bitDepth(encoding) == 1)
+      if (enc::bitDepth(encoding) == 1)
       {
         result->image = cv::Mat(source->image.size(), CV_8UC1);
         result->image.setTo(255./2.);
@@ -593,11 +612,11 @@ CvImageConstPtr cvtColorForDisplay(const CvImageConstPtr& source,
 
   if (min_image_value != max_image_value)
   {
-    if (sensor_msgs::image_encodings::numChannels(source->encoding) != 1)
+    if (enc::numChannels(source->encoding) != 1)
       throw Exception("cv_bridge.cvtColorForDisplay() scaling for images with more than one channel is unsupported");
     CvImagePtr img_scaled_8u(new CvImage());
     img_scaled_8u->header = source->header;
-    img_scaled_8u->encoding = sensor_msgs::image_encodings::MONO8;
+    img_scaled_8u->encoding = enc::MONO8;
     cv::Mat(source->image-min_image_value).convertTo(img_scaled_8u->image, CV_8UC1, 255.0 /
       (max_image_value - min_image_value));
     return cvtColor(img_scaled_8u, encoding);
@@ -611,17 +630,17 @@ CvImageConstPtr cvtColorForDisplay(const CvImageConstPtr& source,
 
   // If we get the OpenCV format, if we have 1,3 or 4 channels, we are most likely in mono, BGR or BGRA modes
   if (source->encoding == "CV_8UC1")
-    source_typed->encoding = sensor_msgs::image_encodings::MONO8;
+    source_typed->encoding = enc::MONO8;
   else if (source->encoding == "16UC1")
-    source_typed->encoding = sensor_msgs::image_encodings::MONO16;
+    source_typed->encoding = enc::MONO16;
   else if (source->encoding == "CV_8UC3")
-    source_typed->encoding = sensor_msgs::image_encodings::BGR8;
+    source_typed->encoding = enc::BGR8;
   else if (source->encoding == "CV_8UC4")
-    source_typed->encoding = sensor_msgs::image_encodings::BGRA8;
+    source_typed->encoding = enc::BGRA8;
   else if (source->encoding == "CV_16UC3")
-    source_typed->encoding = sensor_msgs::image_encodings::BGR8;
+    source_typed->encoding = enc::BGR8;
   else if (source->encoding == "CV_16UC4")
-    source_typed->encoding = sensor_msgs::image_encodings::BGRA8;
+    source_typed->encoding = enc::BGRA8;
 
   // If no conversion is needed, don't convert
   if (source_typed->encoding == encoding)
