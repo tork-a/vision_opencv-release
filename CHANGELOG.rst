@@ -2,6 +2,9 @@
 Changelog for package vision_opencv
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.11.10 (2016-01-16)
+--------------------
+
 1.11.9 (2015-11-29)
 -------------------
 * Add opencv_apps to vision_opencv dependency
