@@ -2,6 +2,12 @@
 Changelog for package image_geometry
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.11.11 (2016-01-31)
+--------------------
+* clean up the doc files
+* fix a few warnings in doc jobs
+* Contributors: Vincent Rabaud
+
 1.11.10 (2016-01-16)
 --------------------
 
