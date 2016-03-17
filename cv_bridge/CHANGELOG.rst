@@ -2,6 +2,11 @@
 Changelog for package cv_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.12.0 (2016-03-18)
+-------------------
+* depend on OpenCV3 only
+* Contributors: Vincent Rabaud
+
 1.11.12 (2016-03-10)
 --------------------
 * Fix my typo

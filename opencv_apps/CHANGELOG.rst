@@ -2,6 +2,11 @@
 Changelog for package opencv_apps
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.12.0 (2016-03-18)
+-------------------
+* geometry_msgs doesn't get used by opencv_apps, but std_msgs does.
+* Contributors: Lucas Walter
+
 1.11.12 (2016-03-10)
 --------------------
 * relax test condition
