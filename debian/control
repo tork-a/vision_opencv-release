@@ -1,0 +1,13 @@
+Source: ros-kinetic-image-geometry
+Section: misc
+Priority: extra
+Maintainer: Vincent Rabaud <vincent.rabaud@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-kinetic-catkin (>= 0.5.68), ros-kinetic-opencv3, ros-kinetic-sensor-msgs
+Homepage: http://www.ros.org/wiki/image_geometry
+Standards-Version: 3.9.2
+
+Package: ros-kinetic-image-geometry
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kinetic-opencv3, ros-kinetic-sensor-msgs
+Description: `image_geometry` contains C++ and Python libraries for interpreting images geometrically.
+ It interfaces the calibration parameters in sensor_msgs/CameraInfo messages with OpenCV functions such as image rectification, much as cv_bridge interfaces ROS sensor_msgs/Image with OpenCV data types.
