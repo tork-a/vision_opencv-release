@@ -2,6 +2,9 @@
 Changelog for package vision_opencv
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.12.1 (2016-07-11)
+-------------------
+
 1.12.0 (2016-03-18)
 -------------------
 * remove opencv_apps from vision_opencv
