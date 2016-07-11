@@ -2,12 +2,17 @@
 Changelog for package image_geometry
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.11.13 (2016-07-11)
---------------------
+1.12.1 (2016-07-11)
+-------------------
 * Add fullResolution getter to PinholeCameraModel
 * add a missing dependency when building the doc
 * fix sphinx doc path
 * Contributors: Jacob Panikulam, Vincent Rabaud
+
+1.12.0 (2016-03-18)
+-------------------
+* depend on OpenCV3 only
+* Contributors: Vincent Rabaud
 
 1.11.12 (2016-03-10)
 --------------------
