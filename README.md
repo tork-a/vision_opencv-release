@@ -1,3 +1,33 @@
+## vision_opencv (kinetic) - 1.12.2-0
+
+The packages in the `vision_opencv` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release --track kinetic --rosdistro kinetic vision_opencv` on `Sat, 24 Sep 2016 19:59:46 -0000`
+
+These packages were released:
+- `cv_bridge`
+- `image_geometry`
+- `vision_opencv`
+
+These packages were explicitly ignored:
+- `opencv_apps`
+- `opencv_tests`
+
+Version of package(s) in repository `vision_opencv`:
+
+- upstream repository: https://github.com/ros-perception/vision_opencv.git
+- release repository: https://github.com/ros-gbp/vision_opencv-release.git
+- rosdistro version: `1.12.1-0`
+- old version: `1.12.1-0`
+- new version: `1.12.2-0`
+
+Versions of tools used:
+
+- bloom version: `0.5.22`
+- catkin_pkg version: `0.2.10`
+- rosdep version: `0.11.5`
+- rosdistro version: `0.4.7`
+- vcstools version: `0.1.39`
+
+
 ## vision_opencv (kinetic) - 1.12.1-0
 
 The packages in the `vision_opencv` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release --rosdistro kinetic --track kinetic vision_opencv` on `Mon, 11 Jul 2016 18:58:21 -0000`
