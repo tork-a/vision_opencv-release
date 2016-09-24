@@ -2,6 +2,9 @@
 Changelog for package opencv_tests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.11.14 (2016-09-24)
+--------------------
+
 1.11.13 (2016-07-11)
 --------------------
 * Support compressed Images messages in python for indigo
