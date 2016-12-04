@@ -2,21 +2,30 @@
 Changelog for package image_geometry
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.11.14 (2016-09-24)
---------------------
+1.12.3 (2016-12-04)
+-------------------
+
+1.12.2 (2016-09-24)
+-------------------
 * Fix "stdlib.h: No such file or directory" errors in GCC-6
   Including '-isystem /usr/include' breaks building with GCC-6.
   See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=70129
+* Merge pull request `#142 <https://github.com/ros-perception/vision_opencv/issues/142>`_ from YuOhara/remap_with_nan_border_value
+  remap with nan border if mat value is float or double
 * remap with nan border if mat value is float or double
-* remap with nan border if mat value is float or double
-* Contributors: Hodorgasm, YuOhara
+* Contributors: Hodorgasm, Vincent Rabaud, YuOhara
 
-1.11.13 (2016-07-11)
---------------------
+1.12.1 (2016-07-11)
+-------------------
 * Add fullResolution getter to PinholeCameraModel
 * add a missing dependency when building the doc
 * fix sphinx doc path
 * Contributors: Jacob Panikulam, Vincent Rabaud
+
+1.12.0 (2016-03-18)
+-------------------
+* depend on OpenCV3 only
+* Contributors: Vincent Rabaud
 
 1.11.12 (2016-03-10)
 --------------------
