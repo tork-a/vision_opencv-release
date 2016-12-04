@@ -2,6 +2,9 @@
 Changelog for package image_geometry
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.12.3 (2016-12-04)
+-------------------
+
 1.12.2 (2016-09-24)
 -------------------
 * Fix "stdlib.h: No such file or directory" errors in GCC-6
