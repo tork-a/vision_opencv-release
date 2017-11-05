@@ -300,7 +300,7 @@ CvImageConstPtr cvtColorForDisplay(const CvImageConstPtr& source,
 /**
  * \brief Get the OpenCV type enum corresponding to the encoding.
  *
- * For example, "bgr8" -> CV_8UC3, "32FC1" -> CV_32FC1, and "32FC10" -> CV_32FC10.
+ * For example, "bgr8" -> CV_8UC3.
  */
 int getCvType(const std::string& encoding);
 
@@ -404,7 +404,7 @@ namespace message_operations {
 template<> struct Printer<cv_bridge::CvImage>
 {
   template<typename Stream>
-  static void stream(Stream& s, const std::string& indent, const cv_bridge::CvImage& m)
+  static void stream(Stream&, const std::string&, const cv_bridge::CvImage&)
   {
     /// @todo Replicate printing for sensor_msgs::Image
   }
