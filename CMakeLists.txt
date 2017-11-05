@@ -13,13 +13,20 @@ if(NOT ANDROID)
 else()
 find_package(Boost REQUIRED)
 endif()
-find_package(OpenCV REQUIRED)
+find_package(OpenCV 3 REQUIRED
+  COMPONENTS
+    opencv_core
+    opencv_imgproc
+    opencv_imgcodecs
+  CONFIG
+)
 
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES ${PROJECT_NAME}
   CATKIN_DEPENDS rosconsole sensor_msgs
   DEPENDS OpenCV
+  CFG_EXTRAS cv_bridge-extras.cmake
 )
 
 catkin_python_setup()
