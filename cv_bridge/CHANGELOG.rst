@@ -2,24 +2,36 @@
 Changelog for package cv_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.11.16 (2017-11-05)
---------------------
-* Silence warnings about un-used variables
+1.12.5 (2017-11-05)
+-------------------
+* add version_gte for opencv3
+  @vrabaud If you'll update opencv3 version as discussed in https://discourse.ros.org/t/opencv-3-3/2674/4, I think we'd better to add 'version_gte' tag so that apt-get install ros-kinetic-cv-bridge also pulls openv3.3 from repository, to avoid API breaking issue between opencv2 and opencv3.
+* Simplify the dependency components of cv_bridge
+  Fixes `#183 <https://github.com/ros-perception/vision_opencv/issues/183>`_
 * Fixes `#177 <https://github.com/ros-perception/vision_opencv/issues/177>`_
   The Python bridge was wrong on OpenCV2 with mono8 (and any Mat
   with only two dimensions btw). Took the official Python bridge
   from OpenCV.
 * Add missing test file
   This fixes `#171 <https://github.com/ros-perception/vision_opencv/issues/171>`_
-* export OpenCV variables
 * Properly deal with alpha in image compression.
   That fixes `#169 <https://github.com/ros-perception/vision_opencv/issues/169>`_
+* Silence warnings about un-used variables
+* export OpenCV variables
 * Contributors: Kei Okada, Victor Lamoine, Vincent Rabaud
 
-1.11.15 (2017-01-29)
---------------------
+1.12.4 (2017-01-29)
+-------------------
 * properly find Boost Python 2 or 3
   This fixes `#158 <https://github.com/ros-perception/vision_opencv/issues/158>`_
+* Contributors: Vincent Rabaud
+
+1.12.3 (2016-12-04)
+-------------------
+* Use api in sensor_msgs to get byte_depth and num channels
+* Implement cpp conversion of N channel image
+  This is cpp version of https://github.com/ros-perception/vision_opencv/pull/141,
+  which is one for python.
 * Fill black color to depth nan region
 * address gcc6 build error in cv_bridge and tune
   With gcc6, compiling fails with `stdlib.h: No such file or directory`,
@@ -33,18 +45,18 @@ Changelog for package cv_bridge
   [1] https://github.com/ros-perception/vision_opencv/commit/ead421b85eeb750cbf7988657015296ed6789bcf
   Signed-off-by: Lukas Bulwahn <lukas.bulwahn@oss.bmw-carit.de>
 * cv_bridge: Add missing test_depend on numpy
-* Contributors: Kentaro Wada, Lukas Bulwahn, Maarten de Vries, Vincent Rabaud
+* Contributors: Kentaro Wada, Lukas Bulwahn, Maarten de Vries
 
-1.11.14 (2016-09-24)
---------------------
+1.12.2 (2016-09-24)
+-------------------
 * Specify background label when colorizing label image
 * Adjust to arbitrary image channels like 32FC40
   Proper fix for `#141 <https://github.com/ros-perception/vision_opencv/issues/141>`_
 * Remove unexpectedly included print statement
 * Contributors: Kentaro Wada, Vincent Rabaud
 
-1.11.13 (2016-07-11)
---------------------
+1.12.1 (2016-07-11)
+-------------------
 * split the conversion tests out of enumerants
 * support is_bigendian in Python
   Fixes `#114 <https://github.com/ros-perception/vision_opencv/issues/114>`_
@@ -80,11 +92,16 @@ Changelog for package cv_bridge
 * Add CvtColorForDisplayOptions with new colormap param
 * fix doc jobs
 * Add python binding for cv_bridge::cvtColorForDisplay
-* Fix compilation of cv_bridge with opencv3 and python3.
 * Don't colorize float image as label image
   This is a bug and image whose encoding is other than 32SC1 should not be
   colorized. (currently, depth images with 32FC1 is also colorized.)
+* Fix compilation of cv_bridge with opencv3 and python3.
 * Contributors: Kentaro Wada, Maarten de Vries, Vincent Rabaud, talregev
+
+1.12.0 (2016-03-18)
+-------------------
+* depend on OpenCV3 only
+* Contributors: Vincent Rabaud
 
 1.11.12 (2016-03-10)
 --------------------
