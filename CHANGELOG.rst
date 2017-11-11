@@ -2,6 +2,11 @@
 Changelog for package cv_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.12.6 (2017-11-11)
+-------------------
+* fix endianness issues
+* Contributors: Vincent Rabaud
+
 1.12.5 (2017-11-05)
 -------------------
 * add version_gte for opencv3
