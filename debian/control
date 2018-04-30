@@ -1,0 +1,12 @@
+Source: ros-melodic-cv-bridge
+Section: misc
+Priority: extra
+Maintainer: Vincent Rabaud <vincent.rabaud@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libboost-all-dev, libopencv-dev, python-dev, python-numpy, python-opencv, ros-melodic-catkin, ros-melodic-rosconsole, ros-melodic-rostest, ros-melodic-sensor-msgs
+Homepage: http://www.ros.org/wiki/cv_bridge
+Standards-Version: 3.9.2
+
+Package: ros-melodic-cv-bridge
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libboost-all-dev, libopencv-dev, python-dev, python-opencv, ros-melodic-rosconsole, ros-melodic-sensor-msgs
+Description: This contains CvBridge, which converts between ROS Image messages and OpenCV images.
