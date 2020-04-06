@@ -32,11 +32,7 @@ if (PYTHON_VERSION_MAJOR VERSION_EQUAL 3)
   add_definitions(-DPYTHON3)
 endif()
 
-if (OpenCV_VERSION_MAJOR VERSION_EQUAL 3)
-add_library(${PROJECT_NAME}_boost module.cpp module_opencv3.cpp)
-else()
-add_library(${PROJECT_NAME}_boost module.cpp module_opencv2.cpp)
-endif()
+add_library(${PROJECT_NAME}_boost module.cpp module_opencv4.cpp)
 target_link_libraries(${PROJECT_NAME}_boost ${Boost_LIBRARIES}
                                             ${catkin_LIBRARIES}
                                             ${PYTHON_LIBRARIES}
@@ -45,11 +41,16 @@ target_link_libraries(${PROJECT_NAME}_boost ${Boost_LIBRARIES}
 
 set_target_properties(${PROJECT_NAME}_boost PROPERTIES
                       LIBRARY_OUTPUT_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_PYTHON_DESTINATION}/${PROJECT_NAME}/boost/
+                      RUNTIME_OUTPUT_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_PYTHON_DESTINATION}/${PROJECT_NAME}/boost/
                       PREFIX ""
 )
 if(APPLE)
   set_target_properties(${PROJECT_NAME}_boost PROPERTIES
                         SUFFIX ".so")
+endif()
+if(MSVC)
+  set_target_properties(${PROJECT_NAME}_boost PROPERTIES
+                        SUFFIX ".pyd")
 endif()
 
 install(TARGETS ${PROJECT_NAME}_boost DESTINATION ${CATKIN_PACKAGE_PYTHON_DESTINATION}/boost/)
