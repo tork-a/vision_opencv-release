@@ -1,0 +1,13 @@
+Source: ros-noetic-image-geometry
+Section: misc
+Priority: optional
+Maintainer: Vincent Rabaud <vincent.rabaud@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libopencv-dev, ros-noetic-catkin, ros-noetic-sensor-msgs
+Homepage: http://www.ros.org/wiki/image_geometry
+Standards-Version: 3.9.2
+
+Package: ros-noetic-image-geometry
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libopencv-dev, ros-noetic-sensor-msgs
+Description: `image_geometry` contains C++ and Python libraries for interpreting images geometrically.
+ It interfaces the calibration parameters in sensor_msgs/CameraInfo messages with OpenCV functions such as image rectification, much as cv_bridge interfaces ROS sensor_msgs/Image with OpenCV data types.
