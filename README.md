@@ -1,3 +1,33 @@
+## vision_opencv (noetic) - 1.16.0-1
+
+The packages in the `vision_opencv` repository were released into the `noetic` distro by running `/usr/bin/bloom-release -r noetic vision_opencv` on `Tue, 23 Nov 2021 17:58:25 -0000`
+
+These packages were released:
+- `cv_bridge`
+- `image_geometry`
+- `vision_opencv`
+
+These packages were explicitly ignored:
+- `opencv_apps`
+- `opencv_tests`
+
+Version of package(s) in repository `vision_opencv`:
+
+- upstream repository: https://github.com/ros-perception/vision_opencv.git
+- release repository: https://github.com/ros-gbp/vision_opencv-release.git
+- rosdistro version: `1.15.0-1`
+- old version: `1.15.0-1`
+- new version: `1.16.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.10.7`
+- catkin_pkg version: `0.4.23`
+- rosdep version: `0.21.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## vision_opencv (noetic) - 1.15.0-1
 
 The packages in the `vision_opencv` repository were released into the `noetic` distro by running `/usr/bin/bloom-release -r noetic vision_opencv` on `Tue, 19 May 2020 16:29:22 -0000`
