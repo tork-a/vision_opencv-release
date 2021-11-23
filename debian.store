@@ -1,1 +1,1 @@
-{"trim": "", "base": "9ba21172", "trimbase": "", "parent": "debian/noetic/vision_opencv", "previous": "e5cd7269"}
+{"base": "6e4d28bb", "parent": "debian/noetic/vision_opencv", "previous": "c02bc204", "trim": "", "trimbase": ""}
