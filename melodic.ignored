@@ -1,2 +1,5 @@
 opencv_apps
 opencv_tests
+cv_bridge
+image_geometry
+vision_opencv
