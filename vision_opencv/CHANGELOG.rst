@@ -2,16 +2,8 @@
 Changelog for package vision_opencv
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.16.0 (2021-11-23)
+1.13.1 (2022-03-22)
 -------------------
-
-1.15.0 (2020-05-19)
--------------------
-
-1.14.0 (2020-04-06)
--------------------
-* Noetic release (`#323 <https://github.com/ros-perception/vision_opencv/issues/323>`_)
-* Contributors: Alejandro Hernández Cordero
 
 1.13.0 (2018-04-30)
 -------------------

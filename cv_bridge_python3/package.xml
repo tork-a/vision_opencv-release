@@ -1,9 +1,15 @@
 <package format="2">
-  <name>cv_bridge</name>
-  <version>1.16.0</version>
+  <name>cv_bridge_python3</name>
+  <version>1.13.1</version>
   <description>
     This contains CvBridge, which converts between ROS
     Image messages and OpenCV images.
+    ==
+    This package intentionally link against boost-python3 and
+    install under /opt/ros/ROS_DISTRO/lib/python3/dist-package
+    Please add
+    import sys, os; sys.path.insert(0,'/opt/ros/' + os.environ['ROS_DISTRO'] + '/lib/python3/dist-packages/')
+    before you call import cv_bridge
   </description>
   <author>Patrick Mihelich</author>
   <author>James Bowman</author>

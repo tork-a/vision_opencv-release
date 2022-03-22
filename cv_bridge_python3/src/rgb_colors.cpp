@@ -34,6 +34,7 @@
  *********************************************************************/
 
 #include "cv_bridge/rgb_colors.h"
+#include <opencv2/core/core.hpp>
 
 
 namespace cv_bridge
