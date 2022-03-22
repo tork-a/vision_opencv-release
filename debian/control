@@ -1,0 +1,13 @@
+Source: ros-melodic-cv-bridge-python3
+Section: misc
+Priority: optional
+Maintainer: Vincent Rabaud <vincent.rabaud@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libboost-all-dev, libopencv-dev, python3-dev, python3-numpy, python3-opencv, ros-melodic-catkin, ros-melodic-rosconsole, ros-melodic-rostest, ros-melodic-sensor-msgs
+Homepage: http://www.ros.org/wiki/cv_bridge
+Standards-Version: 3.9.2
+
+Package: ros-melodic-cv-bridge-python3
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libboost-all-dev, libopencv-dev, python3-dev, python3-opencv, ros-melodic-rosconsole, ros-melodic-sensor-msgs
+Description: This contains CvBridge, which converts between ROS Image messages and OpenCV images.
+ == This package intentionally link against boost-python3 and install under /opt/ros/ROS_DISTRO/lib/python3/dist-package Please add import sys, os; sys.path.insert(0,'/opt/ros/' + os.environ['ROS_DISTRO'] + '/lib/python3/dist-packages/') before you call import cv_bridge
