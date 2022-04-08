@@ -1,3 +1,33 @@
+## vision_opencv_python3 (melodic) - 1.13.2-1
+
+The packages in the `vision_opencv_python3` repository were released into the `melodic` distro by running `/usr/bin/bloom-release vision_opencv_python3 -t melodic -r melodic` on `Fri, 08 Apr 2022 10:20:49 -0000`
+
+The `cv_bridge_python3` package was released.
+
+These packages were explicitly ignored:
+- `opencv_apps`
+- `opencv_tests`
+- `cv_bridge`
+- `image_geometry`
+- `vision_opencv`
+
+Version of package(s) in repository `vision_opencv_python3`:
+
+- upstream repository: https://github.com/jsk-ros-pkg/vision_opencv_python3.git
+- release repository: https://github.com/tork-a/vision_opencv_python3-release.git
+- rosdistro version: `1.13.1-1`
+- old version: `1.13.1-1`
+- new version: `1.13.2-1`
+
+Versions of tools used:
+
+- bloom version: `0.10.7`
+- catkin_pkg version: `0.4.24`
+- rosdep version: `0.21.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## vision_opencv (noetic) - 1.16.0-1
 
 The packages in the `vision_opencv` repository were released into the `noetic` distro by running `/usr/bin/bloom-release -r noetic vision_opencv` on `Tue, 23 Nov 2021 17:58:25 -0000`
